@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
+import 'package:terf/screens/home_page/controller/location_controller.dart';
 import 'package:terf/screens/home_page/view/widget/indicator.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/controller/signup_accountcreate_controller.dart';
 import 'package:terf/screens/widgets/const.dart';
@@ -15,6 +16,13 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final singupController = Provider.of<SignupController>(context);
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final locationCOntroller =
+          Provider.of<LocationController>(context, listen: false);
+      locationCOntroller.getcurrentLocation();
+    });
+
     return Scaffold(
       body: SafeArea(
         child: Padding(

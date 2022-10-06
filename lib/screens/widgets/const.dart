@@ -45,3 +45,6 @@ const loginUrl = 'account/login-email';
 const mobileOtp = 'account/verify-number-otp';
 
 // lQIk6ISJzDZrJ6bY
+
+//
+const locationUrl = '';
