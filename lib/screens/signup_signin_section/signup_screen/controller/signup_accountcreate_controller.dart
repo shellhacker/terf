@@ -13,7 +13,7 @@ class SignupController extends ChangeNotifier {
   final passwordController = TextEditingController();
 
   createUser(context) {
-    final SignupControllerObj =
+    final signupControllerObj =
         Provider.of<SignupService>(context, listen: false);
     print('----------------------heeeeeeeeeeee------------');
 
@@ -24,7 +24,7 @@ class SignupController extends ChangeNotifier {
       const Text('empty qurie');
     } else {
       SignUpModel value = SignUpModel(userMail: email, userPassword: password);
-      SignupControllerObj.signupUser(value.tojson());
+      signupControllerObj.signupUser(value.tojson());
       print('djvhjdfjfjjdfndnfndsnndndnfnf');
       Navigator.push(
         context,
@@ -51,7 +51,7 @@ class SignupController extends ChangeNotifier {
     final savedPasswordValue = sharedPrefrence.getString('password');
     if (savedEmailValue != null || savedPasswordValue != null) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Homepage()));
+          context, MaterialPageRoute(builder: (context) => Homepage()));
     } else {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const LoginPage()));
@@ -64,9 +64,10 @@ class SignupController extends ChangeNotifier {
     sharedPrefrence.remove('password');
 
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Homepage()));
+        context, MaterialPageRoute(builder: (context) => Homepage()));
   }
 
+  // ignore: non_constant_identifier_names
   String? SignupPsswrdValidation(value) {
     if (value!.isEmpty) {
       return 'Password is empty';
@@ -74,6 +75,7 @@ class SignupController extends ChangeNotifier {
     return null;
   }
 
+  // ignore: non_constant_identifier_names
   String? SignupEmailValidation(value) {
     if (value!.isEmpty) {
       return 'Email is empty';

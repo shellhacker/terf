@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: depend_on_referenced_packages
 import 'package:onboarding_animation/onboarding_animation.dart';
-import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:terf/screens/signup_signin_section/login_page/controller/login_accountcreate_controller.dart';
-import 'package:terf/screens/signup_signin_section/onboard_screens/controller/slpash_Screen_controller.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/controller/signup_accountcreate_controller.dart';
 
 class OnboardScreen extends StatelessWidget {
@@ -19,22 +17,22 @@ class OnboardScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(.9),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: OnBoardingAnimation(
             controller: PageController(initialPage: 1),
-            pages: [
+            pages: const [
               _GetCardsContent(
-                image: 'assets\kindpng_1154947.png',
+                image: 'assetskindpng_1154947.png',
                 cardContent:
                     'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
               ),
               _GetCardsContent(
-                image: 'assets\kindpng_1154947.png',
+                image: 'assetskindpng_1154947.png',
                 cardContent:
                     'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
               ),
               _GetCardsContent(
-                image: 'assets\kindpng_1154947.png',
+                image: 'assetskindpng_1154947.png',
                 cardContent:
                     'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
               ),

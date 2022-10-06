@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:terf/screens/home_page/view/homepage.dart';
 import 'package:terf/screens/signup_signin_section/email_verification_screen/controller/email_verification_controller.dart';
 import 'package:terf/screens/signup_signin_section/login_page/controller/login_accountcreate_controller.dart';
 import 'package:terf/screens/signup_signin_section/login_page/services/login_service.dart';
@@ -22,18 +23,18 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SignupController()),
-        ChangeNotifierProvider(create: (_) => SignupService()),
+        // ChangeNotifierProvider(create: (_) => SignupService()),
         ChangeNotifierProvider(create: (_) => EmailVerificationController()),
         ChangeNotifierProvider(create: (_) => LoginController()),
-        ChangeNotifierProvider(create: (_) => LoginService()),
+        // ChangeNotifierProvider(create: (_) => LoginService()),
         ChangeNotifierProvider(create: (_) => MobileOtpController()),
-        ChangeNotifierProvider(create: (_) => MobileVerificationServices()),
+        // ChangeNotifierProvider(create: (_) => MobileVerificationServices()),
       ],
       child: MaterialApp(
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignupPage(),
+        home: Homepage(),
       ),
     );
   }

@@ -4,10 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/model/signup_accountcreate_model.dart';
 import 'package:terf/screens/widgets/const.dart';
 
-class SignupService extends ChangeNotifier {
+class SignupService {
   signupUser(dynamic value) async {
     print('haiiiiiiiiiiii');
-    final response = await Dio().post(baseUrl + signupUrl, data: value);
+    Response response = await Dio().post(baseUrl + signupUrl, data: value);
 
     // log(response.toString());
 

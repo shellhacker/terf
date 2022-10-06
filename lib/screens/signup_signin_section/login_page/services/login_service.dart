@@ -3,12 +3,10 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:terf/screens/signup_signin_section/login_page/model/login_accountcreate_model.dart';
-import 'package:terf/screens/signup_signin_section/signup_screen/model/signup_accountcreate_model.dart';
 import 'package:terf/screens/widgets/const.dart';
 
-class LoginService extends ChangeNotifier {
+class LoginService {
   userLogin(dynamic value) async {
-    print('haiiiiiiiiiiii');
     Response response = await Dio().post(baseUrl + loginUrl, data: value);
 
     log(response.toString());

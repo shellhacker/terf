@@ -21,7 +21,7 @@ class EmailVerificationController extends ChangeNotifier {
 
       if (result.status != false) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Homepage()));
+            context, MaterialPageRoute(builder: (context) => Homepage()));
       } else {
         print(result.status);
         print(result.message);

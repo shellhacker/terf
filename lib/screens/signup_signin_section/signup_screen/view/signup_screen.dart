@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:terf/screens/signup_signin_section/login_page/controller/login_accountcreate_controller.dart';
 import 'package:terf/screens/signup_signin_section/login_page/view/login_screen.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/controller/signup_accountcreate_controller.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/view/widget/register_bttn.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/view/widget/beziercontainer_widget.dart';
 import 'package:terf/screens/widgets/const.dart';
 
-import '../../email_verification_screen/email_verification_screen.dart';
 import '../../mobile_verification_screen/view/mobile_signup_screen.dart';
 
 class SignupPage extends StatelessWidget {
@@ -111,13 +109,13 @@ class SignupPage extends StatelessWidget {
                                       builder: (context) =>
                                           const MobilesignupScreen()));
                             },
-                            icon: FaIcon(FontAwesomeIcons.mobileScreen)),
+                            icon: const FaIcon(FontAwesomeIcons.mobileScreen)),
                         IconButton(
                             onPressed: () {
                               //                      Navigator.push(
                               // context, MaterialPageRoute(builder: (context) => const Homepage()));
                             },
-                            icon: FaIcon(FontAwesomeIcons.google))
+                            icon: const FaIcon(FontAwesomeIcons.google))
                       ],
                     ),
                   ],

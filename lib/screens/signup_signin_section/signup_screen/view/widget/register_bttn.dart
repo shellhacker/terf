@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:terf/screens/signup_signin_section/email_verification_screen/email_verification_screen.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/controller/signup_accountcreate_controller.dart';
 
 class SignupRegisterButton extends StatelessWidget {

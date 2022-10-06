@@ -36,9 +36,12 @@ const kheight50 = SizedBox(
 
 const baseUrl =
 // ' http://localhost:3000/account/';
+    'https://bkplaytime.herokuapp.com/';
 
-    'http://10.0.2.2:3000/account/';
-const signupUrl = 'signup-email';
-const emailOtpUrl = 'verify-email-otp';
-const loginUrl = 'login-email';
-const mobileOtp = 'verify-number-otp';
+// 'http://10.0.2.2:3000/account/';
+const signupUrl = 'account/signup-email';
+const emailOtpUrl = 'account/verify-email-otp';
+const loginUrl = 'account/login-email';
+const mobileOtp = 'account/verify-number-otp';
+
+// lQIk6ISJzDZrJ6bY

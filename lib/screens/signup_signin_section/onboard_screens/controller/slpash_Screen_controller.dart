@@ -1,3 +1,6 @@
+// ignore: file_names
+// ignore: file_names
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:terf/screens/home_page/view/homepage.dart';

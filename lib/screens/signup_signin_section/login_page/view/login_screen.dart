@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:terf/screens/home_page/view/homepage.dart';
 import 'package:terf/screens/signup_signin_section/login_page/controller/login_accountcreate_controller.dart';
-import 'package:terf/screens/signup_signin_section/login_page/services/login_service.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/view/signup_screen.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/view/widget/beziercontainer_widget.dart';
 import 'package:terf/screens/widgets/const.dart';
 
-import '../../email_verification_screen/email_verification_screen.dart';
 import '../../mobile_verification_screen/view/mobile_signup_screen.dart';
 
 class LoginPage extends StatelessWidget {
@@ -82,7 +79,7 @@ class LoginPage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignupPage()));
+                                builder: (context) => const SignupPage()));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -108,13 +105,13 @@ class LoginPage extends StatelessWidget {
                     kheight10,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Divider(
+                      children: const [
+                        Divider(
                           thickness: 2,
                           height: 2,
                         ),
-                        const Text('or'),
-                        const Divider(
+                        Text('or'),
+                        Divider(
                           thickness: 2,
                           height: 2,
                         ),
@@ -131,13 +128,13 @@ class LoginPage extends StatelessWidget {
                                       builder: (context) =>
                                           const MobilesignupScreen()));
                             },
-                            icon: FaIcon(FontAwesomeIcons.mobileScreen)),
+                            icon: const FaIcon(FontAwesomeIcons.mobileScreen)),
                         IconButton(
                             onPressed: () {
                               //                      Navigator.push(
                               // context, MaterialPageRoute(builder: (context) => const Homepage()));
                             },
-                            icon: FaIcon(FontAwesomeIcons.google))
+                            icon: const FaIcon(FontAwesomeIcons.google))
                       ],
                     ),
                   ],

@@ -5,7 +5,9 @@ import 'package:provider/provider.dart';
 
 import '../../email_verification_screen/controller/email_verification_controller.dart';
 
-class mobileVerificationScreen extends StatelessWidget {
+class MobileVerificationScreen extends StatelessWidget {
+  const MobileVerificationScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
