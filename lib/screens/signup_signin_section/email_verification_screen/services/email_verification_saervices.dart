@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:terf/screens/signup_signin_section/email_verification_screen/model/signup_email_verify_model.dart';
 import 'package:terf/screens/widgets/const.dart';
 
-class EmailVerficationService extends ChangeNotifier {
+class EmailVerficationService {
   static emailVerifying(dynamic value) async {
     print("jgjhjghtfjfyjyu");
     try {

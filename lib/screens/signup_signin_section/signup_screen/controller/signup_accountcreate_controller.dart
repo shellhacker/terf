@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:terf/screens/home_page/view/homepage.dart';
 import 'package:terf/screens/signup_signin_section/login_page/view/login_screen.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/model/signup_accountcreate_model.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/services/signup_service.dart';
@@ -11,27 +9,26 @@ import '../../email_verification_screen/email_verification_screen.dart';
 class SignupController extends ChangeNotifier {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  SignUpRespoModel? signUpRespoModel;
 
-  createUser(context) {
-    final signupControllerObj =
-        Provider.of<SignupService>(context, listen: false);
-    print('----------------------heeeeeeeeeeee------------');
-
+  void createUser(context) async {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
-      const Text('empty qurie');
+      return;
     } else {
       SignUpModel value = SignUpModel(userMail: email, userPassword: password);
-      signupControllerObj.signupUser(value.tojson());
-      print('djvhjdfjfjjdfndnfndsnndndnfnf');
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                const PinCodeVerificationScreen('shabanasshas@gmail.com')),
-      );
+      signUpRespoModel =
+          await SignupService.instance.signupUser(value, context);
+      if (signUpRespoModel!.status == true) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  const PinCodeVerificationScreen('shabanasshas@gmail.com')),
+        );
+      }
     }
     saveToSharedPref();
   }
@@ -50,8 +47,9 @@ class SignupController extends ChangeNotifier {
     final savedEmailValue = sharedPrefrence.getString('email');
     final savedPasswordValue = sharedPrefrence.getString('password');
     if (savedEmailValue != null || savedPasswordValue != null) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Homepage()));
+      // Navigator.push(
+      // context, MaterialPageRoute(builder: (context) => Homepage())
+      // );
     } else {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const LoginPage()));
@@ -63,13 +61,13 @@ class SignupController extends ChangeNotifier {
     sharedPrefrence.remove('email');
     sharedPrefrence.remove('password');
 
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Homepage()));
+    // Navigator.push(
+    //     context, MaterialPageRoute(builder: (context) => Homepage()));
   }
 
   // ignore: non_constant_identifier_names
   String? SignupPsswrdValidation(value) {
-    if (value!.isEmpty) {
+    if (value!.isEmpty && value == null) {
       return 'Password is empty';
     }
     return null;
@@ -77,7 +75,7 @@ class SignupController extends ChangeNotifier {
 
   // ignore: non_constant_identifier_names
   String? SignupEmailValidation(value) {
-    if (value!.isEmpty) {
+    if (value!.isEmpty && value == null) {
       return 'Email is empty';
     }
     return null;

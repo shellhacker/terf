@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:terf/screens/signup_signin_section/login_page/model/login_accountcreate_model.dart';
 import 'package:terf/screens/widgets/const.dart';
 
@@ -13,9 +12,7 @@ class LoginService {
 
     try {
       if (response.statusCode == 200) {
-        var datas = await json.decode(response.data);
-        final emailotp = datas;
-        print('object_____________________$emailotp');
+        await json.decode(response.data);
         return LoginRespoModel.fromJson(response.data);
       }
     } on DioError catch (e) {

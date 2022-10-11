@@ -7,7 +7,6 @@ class SignUpModel {
     required this.userPassword,
   });
 
- 
   Map<String, dynamic> tojson() {
     return {
       'user_mail': userMail,
@@ -16,16 +15,16 @@ class SignUpModel {
   }
 }
 
-class SignUpRespoModel{
-
+class SignUpRespoModel {
   String id;
-  String status;
+  bool status;
 
-  SignUpRespoModel({required this.id,required this.status, });
+  SignUpRespoModel({
+    required this.id,
+    required this.status,
+  });
 
-  factory SignUpRespoModel.fromJson(Map<String, dynamic> json){
-    return SignUpRespoModel(id: json['id'], status:json['status']);
+  factory SignUpRespoModel.fromJson(Map<String, dynamic> json) {
+    return SignUpRespoModel(id: json['id'], status: json['status']);
   }
-
-
 }

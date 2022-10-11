@@ -189,11 +189,11 @@ class LoginPage extends StatelessWidget {
               color: Color(0xffe46b10)),
           children: [
             TextSpan(
-              text: 'play',
+              text: 'Play',
               style: TextStyle(color: Colors.black, fontSize: 30),
             ),
             TextSpan(
-              text: 'time',
+              text: 'Time',
               style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
             ),
           ]),

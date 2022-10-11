@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:terf/screens/home_page/view/homepage.dart';
 import 'package:terf/screens/signup_signin_section/login_page/model/login_accountcreate_model.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/controller/signup_accountcreate_controller.dart';
 
@@ -27,8 +26,8 @@ class LoginController extends ChangeNotifier {
       loginServiceProvider.userLogin(value.tojson());
       print('djvhjdfjfjjdfndnfndsnndndnfnf');
       signupControllerProvider.saveToSharedPref();
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Homepage()));
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => Homepage()));
     }
   }
 }

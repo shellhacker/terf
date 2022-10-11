@@ -11,6 +11,9 @@ class SignupRegisterButton extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
+        // if (singupController.formKey.currentState!.validate()) {
+
+        // }
         singupController.createUser(context);
       },
       child: Container(

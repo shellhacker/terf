@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:terf/screens/signup_signin_section/mobile_verification_screen/model/mobile_verification_model.dart';
 import 'package:terf/screens/widgets/const.dart';
 
