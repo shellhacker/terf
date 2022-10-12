@@ -28,22 +28,22 @@ class SignupService {
             backgroundColor: Color.fromARGB(255, 97, 98, 97)));
       } else if (e.type == DioErrorType.connectTimeout) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Connection Time out')));
+            .showSnackBar(const SnackBar(content: Text('Connection Time out')));
       } else if (e.type == DioErrorType.receiveTimeout) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Timeout Error')));
+            .showSnackBar(const SnackBar(content: Text('Timeout Error')));
       } else if (e.type == DioErrorType.other) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Network Error')));
+            .showSnackBar(const SnackBar(content: Text('Network Error')));
       }
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Error Founded: $e'),
-          backgroundColor: Color.fromARGB(255, 73, 73, 73)));
+          backgroundColor: const Color.fromARGB(255, 73, 73, 73)));
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Error Founded: $e'),
-          backgroundColor: Color.fromARGB(255, 47, 48, 47)));
+          backgroundColor: const Color.fromARGB(255, 47, 48, 47)));
     }
   }
 }

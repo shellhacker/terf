@@ -11,7 +11,7 @@ class StaticCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: size.height * .18,
       // decoration: boxDecoration,
       child: Row(

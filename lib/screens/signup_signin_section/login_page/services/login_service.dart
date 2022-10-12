@@ -1,26 +1,50 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:terf/screens/signup_signin_section/login_page/model/login_accountcreate_model.dart';
 import 'package:terf/screens/widgets/const.dart';
 
 class LoginService {
-  userLogin(dynamic value) async {
-    Response response = await Dio().post(baseUrl + loginUrl, data: value);
+  LoginService._instans();
+  static LoginService instance = LoginService._instans();
+  factory LoginService() {
+    return instance;
+  }
 
-    log(response.toString());
-
+  Future<LoginRespoModel?> userLogin(LoginModel value, context) async {
     try {
+      Response response =
+          await Dio().post(baseUrl + loginUrl, data: value.tojson());
+
       if (response.statusCode == 200) {
-        await json.decode(response.data);
+        print(response.data);
         return LoginRespoModel.fromJson(response.data);
       }
     } on DioError catch (e) {
       if (e.response?.statusCode == 401) {
-        return LoginRespoModel.fromJson(response.data);
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('Server Not Founded'),
+            backgroundColor: Color.fromARGB(255, 97, 98, 97)));
+      } else if (e.type == DioErrorType.connectTimeout) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Connection Time out')));
+      } else if (e.type == DioErrorType.receiveTimeout) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Timeout Error')));
+      } else if (e.type == DioErrorType.other) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Network Error')));
       }
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Error Founded: $e'),
+          backgroundColor: const Color.fromARGB(255, 73, 73, 73)));
     } catch (e) {
-      print("error-----------$e");
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Error Founded: $e'),
+          backgroundColor: const Color.fromARGB(255, 47, 48, 47)));
     }
+    // return LoginRespoModel.fromJson(response.data);
   }
 }
