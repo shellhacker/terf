@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:terf/screens/widgets/const.dart';
+import 'package:terf/widgets/const.dart';
 
-import '../controller/mobile_otp_controlller.dart';
+import '../controller/mobile_number_login_controlller.dart';
+import 'mobile_otp_verfication_screen.dart';
 
 class MobilesignupScreen extends StatelessWidget {
   const MobilesignupScreen({Key? key, this.title}) : super(key: key);
@@ -11,7 +12,8 @@ class MobilesignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mobileotpController = Provider.of<MobileOtpController>(context);
+    final mobileotpController =
+        Provider.of<MobileNumberVerifyController>(context);
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SizedBox(
@@ -53,12 +55,12 @@ class MobilesignupScreen extends StatelessWidget {
                     kheight20,
                     InkWell(
                       onTap: () {
-                        // mobileotpController.loginMobileOtp(context);
+                        mobileotpController.loginMobileNumber(context);
                         // Navigator.push(
                         //     context,
                         //     MaterialPageRoute(
                         //         builder: (context) =>
-                        //             mobileVerificationScreen()));
+                        //             MobileVerificationScreen()));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -114,10 +116,11 @@ class MobilesignupScreen extends StatelessWidget {
   }
 
   Widget _submitButton(context) {
-    final mobileOtpcontroller = Provider.of<MobileOtpController>(context);
+    final mobileOtpcontroller =
+        Provider.of<MobileNumberVerifyController>(context);
     return GestureDetector(
       onTap: () {
-        mobileOtpcontroller.loginMobileOtp(context);
+        mobileOtpcontroller.loginMobileNumber(context);
       },
       child: Container(
         width: MediaQuery.of(context).size.width,

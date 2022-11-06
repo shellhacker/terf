@@ -11,6 +11,8 @@ class SignupController extends ChangeNotifier {
   final passwordController = TextEditingController();
   SignUpRespoModel? signUpRespoModel;
 
+  bool sharedPrefferenceboolcheck = false;
+
   void createUser(context) async {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
@@ -37,44 +39,28 @@ class SignupController extends ChangeNotifier {
     //shared preference
 
     final sharedPrefrence = await SharedPreferences.getInstance();
-    //save value
-    sharedPrefrence.setString('email', emailController.text.trim());
-    sharedPrefrence.setString('password', passwordController.text.trim());
-  }
-
-  getSavedData(context) async {
-    final sharedPrefrence = await SharedPreferences.getInstance();
-    final savedEmailValue = sharedPrefrence.getString('email');
-    final savedPasswordValue = sharedPrefrence.getString('password');
-    if (savedEmailValue != null || savedPasswordValue != null) {
-      // Navigator.push(
-      // context, MaterialPageRoute(builder: (context) => Homepage())
-      // );
-    } else {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const LoginPage()));
-    }
+    sharedPrefrence.setBool("keyValue", true);
   }
 
   clearSavedData(context) async {
     final sharedPrefrence = await SharedPreferences.getInstance();
-    sharedPrefrence.remove('email');
-    sharedPrefrence.remove('password');
+    sharedPrefrence.remove('keyValue');
 
-    // Navigator.push(
-    //     context, MaterialPageRoute(builder: (context) => Homepage()));
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const LoginPage(),
+      ),
+    );
   }
 
-  // ignore: non_constant_identifier_names
-  String? SignupPsswrdValidation(value) {
+  String? signupPsswrdValidation(value) {
     if (value!.isEmpty && value == null) {
       return 'Password is empty';
     }
     return null;
   }
 
-  // ignore: non_constant_identifier_names
-  String? SignupEmailValidation(value) {
+  String? signupEmailValidation(value) {
     if (value!.isEmpty && value == null) {
       return 'Email is empty';
     }

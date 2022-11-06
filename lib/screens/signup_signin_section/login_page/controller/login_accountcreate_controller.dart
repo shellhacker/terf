@@ -3,17 +3,17 @@ import 'package:provider/provider.dart';
 import 'package:terf/screens/signup_signin_section/login_page/model/login_accountcreate_model.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/controller/signup_accountcreate_controller.dart';
 
-import '../../../home_page/view/homepage_old.dart';
+import '../../../home_page/view/homepage.dart';
 import '../services/login_service.dart';
 
 class LoginController extends ChangeNotifier {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool loginpage = false;
 
   loginUser(context) async {
     final signupControllerProvider =
         Provider.of<SignupController>(context, listen: false);
-    print('----------------------heeeeeeeeeeee------------');
 
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
@@ -22,18 +22,28 @@ class LoginController extends ChangeNotifier {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('Enter valied Data')));
     } else {
+      loginpage = true;
       LoginModel value = LoginModel(userMail: email, userPassword: password);
-      LoginRespoModel? loginRespoModel =
+      GetAllTimeSlot? loginRespoModel =
           await LoginService.instance.userLogin(value, context);
-      signupControllerProvider.saveToSharedPref();
       if (loginRespoModel!.status == true) {
+        signupControllerProvider.saveToSharedPref();
+        getToken(loginRespoModel);
+
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Homepage()));
       } else if (loginRespoModel.message == null) {
-        print('value is null');
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Value is null')));
       } else {
         print(loginRespoModel.message);
       }
     }
+  }
+
+  getToken(GetAllTimeSlot value) async {
+    await secureStorage.write(key: 'Token', value: value.token);
+    await secureStorage.write(key: 'refreshToken', value: value.refreshToken);
+    await secureStorage.write(key: 'loginTrue', value: 'true');
   }
 }

@@ -1,9 +1,7 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/model/signup_accountcreate_model.dart';
-import 'package:terf/screens/widgets/const.dart';
+import 'package:terf/widgets/const.dart';
 
 class SignupService {
   SignupService._internal();
@@ -45,5 +43,6 @@ class SignupService {
           content: Text('Error Founded: $e'),
           backgroundColor: const Color.fromARGB(255, 47, 48, 47)));
     }
+    return null;
   }
 }

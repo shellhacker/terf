@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:terf/screens/signup_signin_section/login_page/controller/login_accountcreate_controller.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/view/signup_screen.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/view/widget/beziercontainer_widget.dart';
-import 'package:terf/screens/widgets/const.dart';
+import 'package:terf/widgets/const.dart';
 
 import '../../mobile_verification_screen/view/mobile_signup_screen.dart';
 
@@ -17,6 +17,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginController = Provider.of<LoginController>(context);
     final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: SizedBox(
         height: height,
@@ -151,6 +152,7 @@ class LoginPage extends StatelessWidget {
     final logincontroller = Provider.of<LoginController>(context);
     return GestureDetector(
       onTap: () {
+        // logincontroller.loginpage == true ? const CircularProgressIndicator():
         logincontroller.loginUser(context);
       },
       child: Container(

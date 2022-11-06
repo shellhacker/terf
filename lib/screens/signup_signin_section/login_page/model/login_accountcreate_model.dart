@@ -15,16 +15,26 @@ class LoginModel {
   }
 }
 
-class LoginRespoModel {
+class GetAllTimeSlot {
   String? message;
   bool? status;
+  String? token;
+  String? refreshToken;
+  String? id;
 
-  LoginRespoModel({
-    required this.message,
-    required this.status,
-  });
+  GetAllTimeSlot(
+      {required this.message,
+      required this.status,
+      this.token,
+      this.refreshToken,
+      this.id});
 
-  factory LoginRespoModel.fromJson(Map<String, dynamic> json) {
-    return LoginRespoModel(message: json['message'], status: json['status']);
+  factory GetAllTimeSlot.fromJson(Map<String, dynamic> json) {
+    return GetAllTimeSlot(
+        message: json['message'],
+        status: json['status'],
+        token: json['token'],
+        refreshToken: json['refreshToken'],
+        id: json['_id']);
   }
 }

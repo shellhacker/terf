@@ -1,6 +1,6 @@
 class MobileVerificationModel {
   String? number;
-  String? status;
+  bool? status;
   String? id;
   MobileVerificationModel({this.number, this.status, this.id});
   Map<String, dynamic> tojson() {

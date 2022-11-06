@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
+import '../controller/mobile_otp_verifying_controller.dart';
 
-import '../../email_verification_screen/controller/email_verification_controller.dart';
-
-class MobileVerificationScreen extends StatelessWidget {
-  const MobileVerificationScreen({super.key});
+class OtpVerificationScreen extends StatelessWidget {
+  const OtpVerificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    final emailVerificationController =
-        Provider.of<EmailVerificationController>(context);
+    final otpController = Provider.of<OtpController>(context);
     return Scaffold(
       backgroundColor: Colors.blue.shade50,
       body: Padding(
@@ -71,9 +69,8 @@ class MobileVerificationScreen extends StatelessWidget {
               child: SizedBox(
                 width: width,
                 child: Pinput(
-                  controller:
-                      emailVerificationController.emailEditingController,
-                  length: 4,
+                  controller: otpController.mobileOtpTextfield,
+                  length: 6,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   defaultPinTheme: PinTheme(
@@ -132,7 +129,7 @@ class MobileVerificationScreen extends StatelessWidget {
             const Expanded(child: SizedBox()),
             InkWell(
               onTap: () {
-                emailVerificationController.verifyEmailOtp(context);
+                otpController.mobileOtpVerify(context);
                 print('object');
                 //  Navigator.push(
                 //             context,

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:terf/screens/signup_signin_section/email_verification_screen/model/signup_email_verify_model.dart';
-import 'package:terf/screens/widgets/const.dart';
+import 'package:terf/widgets/const.dart';
 
 class EmailVerficationService {
   static emailVerifying(dynamic value) async {

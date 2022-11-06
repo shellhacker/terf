@@ -5,7 +5,7 @@ import 'package:terf/screens/signup_signin_section/login_page/view/login_screen.
 import 'package:terf/screens/signup_signin_section/signup_screen/controller/signup_accountcreate_controller.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/view/widget/register_bttn.dart';
 import 'package:terf/screens/signup_signin_section/signup_screen/view/widget/beziercontainer_widget.dart';
-import 'package:terf/screens/widgets/const.dart';
+import 'package:terf/widgets/const.dart';
 
 import '../../mobile_verification_screen/view/mobile_signup_screen.dart';
 
@@ -48,7 +48,7 @@ class SignupPage extends StatelessWidget {
                           border: InputBorder.none,
                           fillColor: Color.fromARGB(255, 201, 201, 203),
                           filled: true),
-                      validator: singupController.SignupEmailValidation,
+                      validator: singupController.signupEmailValidation,
                     ),
                     kheight20,
                     TextFormField(
@@ -58,7 +58,7 @@ class SignupPage extends StatelessWidget {
                           border: InputBorder.none,
                           fillColor: Color.fromARGB(255, 201, 201, 203),
                           filled: true),
-                      validator: singupController.SignupPsswrdValidation,
+                      validator: singupController.signupPsswrdValidation,
                     ),
                     const SizedBox(
                       height: 20,
