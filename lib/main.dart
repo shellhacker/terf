@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:terf/screens/booking_time_slot/controller/book_time_slot.dart';
 import 'package:terf/screens/booking_time_slot/controller/time_slot_converssion.dart';
 import 'package:terf/screens/booking_time_slot/controller/colender_controller.dart';
-import 'package:terf/screens/booking_time_slot/controller/get_all_timebooked_slot.dart';
 import 'package:terf/screens/bottum_screen/controller/bottum_controller.dart';
 import 'package:terf/screens/home_page/controller/home%20_data_getting_controller.dart';
 import 'package:terf/screens/home_page/controller/product_details.dart';
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProductDetailsController()),
         ChangeNotifierProvider(create: (_) => SearchController()),
         ChangeNotifierProvider(create: (_) => CommenErrorHandler()),
-        ChangeNotifierProvider(create: (_) => GetAllBookedTimeSlotController()),
+        ChangeNotifierProvider(create: (_) => BookFreeTimeSlotController()),
       ],
       child: MaterialApp(
         theme: ThemeData(),

@@ -5,13 +5,13 @@ class GetAllTurfTimeSlot {
   });
 
   bool? status;
-  List<DateSlotDetails>? data;
+  List<BookNowTimeSlot>? data;
 
   factory GetAllTurfTimeSlot.fromJson(Map<String, dynamic> json) =>
       GetAllTurfTimeSlot(
         status: json["status"],
-        data: List<DateSlotDetails>.from(
-            json["data"].map((x) => DateSlotDetails.fromJson(x))),
+        data: List<BookNowTimeSlot>.from(
+            json["data"].map((x) => BookNowTimeSlot.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -20,8 +20,8 @@ class GetAllTurfTimeSlot {
       };
 }
 
-class DateSlotDetails {
-  DateSlotDetails({
+class BookNowTimeSlot {
+  BookNowTimeSlot({
     this.id,
     this.bookingDate,
     this.turfId,
@@ -33,8 +33,8 @@ class DateSlotDetails {
   String? turfId;
   List<int>? timeSlot;
 
-  factory DateSlotDetails.fromJson(Map<String, dynamic> json) =>
-      DateSlotDetails(
+  factory BookNowTimeSlot.fromJson(Map<String, dynamic> json) =>
+      BookNowTimeSlot(
         id: json["_id"],
         bookingDate: json["booking_date"],
         turfId: json["turf_id"],
@@ -42,7 +42,6 @@ class DateSlotDetails {
       );
 
   Map<String, dynamic> toJson() => {
-        "_id": id,
         "booking_date": bookingDate,
         "turf_id": turfId,
         "time_slot": List<dynamic>.from(timeSlot!.map((x) => x)),

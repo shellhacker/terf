@@ -5,6 +5,7 @@ import 'package:terf/screens/home_page/view/widget/aminities.dart';
 import 'package:terf/widgets/comment_text.dart';
 
 import '../../../../widgets/const.dart';
+import '../../../booking_time_slot/controller/book_time_slot.dart';
 import '../../../booking_time_slot/controller/time_slot_converssion.dart';
 import '../../../booking_time_slot/view/booking_time_slot.dart';
 import 'category_widget.dart';
@@ -21,6 +22,8 @@ class ProductDetailsSecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bookFreeTimeSlotController =
+        Provider.of<BookFreeTimeSlotController>(context);
     final bookingTimeSLotController =
         Provider.of<BookingTimeSLotTimeController>(context);
 
@@ -145,6 +148,9 @@ class ProductDetailsSecondPage extends StatelessWidget {
               const Spacer(),
               ElevatedButton(
                 onPressed: () {
+                  bookFreeTimeSlotController.clearAllList();
+                  bookFreeTimeSlotController.getBookedDetails(
+                      turfDetails, context);
                   bookingTimeSLotController.getAllTimeSlot(
                       turfDetails, context);
                   Navigator.of(context).push(MaterialPageRoute(

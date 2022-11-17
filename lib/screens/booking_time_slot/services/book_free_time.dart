@@ -4,20 +4,31 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:terf/screens/signup_signin_section/login_page/model/login_accountcreate_model.dart';
 import 'package:terf/widgets/const.dart';
 
+import '../model/booking_data_model.dart';
 import '../model/get_booking_time_slot.dart';
 
-class GetAllBookedSlotServices {
-  Future<List<BookNowTimeSlot>?> getAllBookedDetails(id, context) async {
+class BookFreeSlotServices {
+  BookFreeSlotServices._instans();
+  static BookFreeSlotServices instance = BookFreeSlotServices._instans();
+  factory BookFreeSlotServices() {
+    return instance;
+  }
+
+  static Future<Welcome?> bookFreeTime(BookNowTimeSlot value, context) async {
+    print('heloooooooooooooo');
+    print(value.id);
+
     try {
-      Response response = await Dio().get(baseUrl + getBookedTimeSlot + id);
+      Response response =
+          await Dio().post(baseUrl + bookNowSlotApi, data: value.toJson());
+      print('hel55555555555555555555555oooo');
 
       if (response.statusCode == 200) {
-        //first way for getting data from data///////
-        //  return List<BookNowTimeSlot>.from(
-        // response.data["data"].map((x) => BookNowTimeSlot.fromJson(x)));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('Turf Booked Successfully'),
+            backgroundColor: Color.fromARGB(255, 97, 98, 97)));
 
-        //second way for gettinf data from data///////
-        return GetAllTurfTimeSlot.fromJson(response.data).data;
+        return Welcome.fromJson(response.data);
       }
     } on DioError catch (e) {
       if (e.response?.statusCode == 401) {

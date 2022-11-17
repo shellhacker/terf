@@ -96,3 +96,5 @@ const nearestTurfApi =
     'https://fauxspot.herokuapp.com/user/nearest-turf/$currentLocation';
 
 const searchTurfApi = 'https://fauxspot.herokuapp.com/user/all-turf';
+const getBookedTimeSlot = 'account/get-booking/';
+const bookNowSlotApi = 'account/add-booking';

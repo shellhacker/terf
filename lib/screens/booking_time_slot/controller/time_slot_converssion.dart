@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 import 'package:terf/screens/home_page/model/nearby_turf_model.dart';
-
-import 'get_all_timebooked_slot.dart';
 
 class BookingTimeSLotTimeController extends ChangeNotifier {
   List mornigTimeSlot = [];
@@ -14,19 +11,12 @@ class BookingTimeSLotTimeController extends ChangeNotifier {
   List<bool> isSelectedEvening() => eveningSelected;
   List<bool> mrngSelected = [];
   List<bool> isSelectedMrng() => mrngSelected;
+  // Map<String, dynamic> getMrngSlot = {'mrngStrtTime': '', 'mrngEndTime': ''};
 
   getAllTimeSlot(NearestTurfDetails details, context) {
-    final getAllBookedTimeSlotController =
-        Provider.of<GetAllBookedTimeSlotController>(context, listen: false);
-
-    print('helooooooooooo');
-
     getMrngSlotTime(details);
     getAfternoonTimeSlot(details);
     getEveningTimeSlot(details);
-    getAllBookedTimeSlotController.getAllBookedSlotTurfSlot(
-        context, details.id.toString());
-    print('helooooooooooo');
   }
 
   getMrngSlotTime(NearestTurfDetails details) {
@@ -40,6 +30,11 @@ class BookingTimeSLotTimeController extends ChangeNotifier {
 
       final time = "$timeStart:00 - $timeEnd:00";
       mornigTimeSlot.add(time);
+      // getMrngSlot.update('mrngStrtTime', (value) => timeStart);
+      // getMrngSlot.update('mrngEndTime', (value) => timeEnd);
+
+      // print(getMrngSlot);
+      // const Text('zxcvcvb');
     }
 
     mrngSelected = List.generate(mornigTimeSlot.length, (index) => false);

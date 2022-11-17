@@ -4,11 +4,11 @@ import '../../home_page/model/nearby_turf_model.dart';
 import '../services/search_controller_services.dart';
 
 class SearchController extends ChangeNotifier {
-  SearchController._instans();
-  static SearchController instance = SearchController._instans();
-  factory SearchController() {
-    return instance;
-  }
+  // SearchController._instans();
+  // static SearchController instance = SearchController._instans();
+  // factory SearchController() {
+  //   return instance;
+  // }
   bool? isSelected;
   TextEditingController text = TextEditingController();
 
